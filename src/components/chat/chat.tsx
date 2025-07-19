@@ -121,6 +121,7 @@ const Chat = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get('query');
+  
   const [autoSubmitted, setAutoSubmitted] = useState(false);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [isTalking, setIsTalking] = useState(false);

@@ -1,4 +1,5 @@
 import { openai } from '@ai-sdk/openai';
+import { deepseek } from '@ai-sdk/deepseek';
 import { streamText } from 'ai';
 import { SYSTEM_PROMPT } from './prompt';
 import { getContact } from './tools/getContact';
@@ -11,6 +12,7 @@ import { getSkills } from './tools/getSkills';
 import { getSports } from './tools/getSport';
 
 export const maxDuration = 30;
+
 
 // ❌ Pas besoin de l'export ici, Next.js n'aime pas ça
 function errorHandler(error: unknown) {
@@ -45,7 +47,8 @@ export async function POST(req: Request) {
     };
 
     const result = streamText({
-      model: openai('gpt-4o-mini'),
+      // model: openai('gpt-4o-mini'),
+      model: deepseek('deepseek-chat'),
       messages,
       toolCallStreaming: true,
       tools,
