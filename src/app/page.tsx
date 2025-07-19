@@ -3,6 +3,7 @@
 import FluidCursor from '@/components/FluidCursor';
 import { Button } from '@/components/ui/button';
 import { GithubButton } from '@/components/ui/github-button';
+import {LinkedinButton} from '@/components/ui/linkedin-button'
 import WelcomeModal from '@/components/welcome-modal';
 import { motion } from 'framer-motion';
 import {
@@ -93,13 +94,16 @@ export default function Home() {
       </div>
 
       {/* GitHub button */}
-      <div className="absolute top-6 right-8 z-20">
-        <GithubButton
+      <div className="absolute top-6 right-8 z-20 flex gap-3">
+        {/* <GithubButton
           //targetStars={68}
           animationDuration={1.5}
           label="Star"
           size={'sm'}
-          repoUrl="https://github.com/toukoum/portfolio"
+          repoUrl="https://github.com/ketan0095"
+        /> */}
+        <LinkedinButton
+        profileUrl="https://www.linkedin.com/in/ketan-shetye-769892133/"
         />
       </div>
 
@@ -129,7 +133,7 @@ export default function Home() {
         </div>
 
         <h2 className="text-secondary-foreground mt-1 text-xl font-semibold md:text-2xl">
-          Hey, I'm Raphael 👋
+          Hey, Ketan 👋
         </h2>
         <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
           AI portfolio
