@@ -18,6 +18,7 @@ import {
 import WelcomeModal from '@/components/welcome-modal';
 import { Info } from 'lucide-react';
 import { GithubButton } from '../ui/github-button';
+import { LinkedinButton } from '../ui/linkedin-button';
 import HelperBoost from './HelperBoost';
 
 // ClientOnly component for client-side rendering
@@ -286,12 +287,9 @@ const Chat = () => {
           }
         />
         <div className="">
-          <GithubButton
-            animationDuration={1.5}
-            label="Star"
-            size={'sm'}
-            repoUrl="https://github.com/toukoum/portfolio"
-          />
+          <LinkedinButton
+        profileUrl={process.env.NEXT_PUBLIC_LINKEDIN_PROFILE ?? ""}
+        />
         </div>
       </div>
 

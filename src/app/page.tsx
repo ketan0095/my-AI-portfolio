@@ -103,7 +103,7 @@ export default function Home() {
           repoUrl="https://github.com/ketan0095"
         /> */}
         <LinkedinButton
-        profileUrl="https://www.linkedin.com/in/ketan-shetye-769892133/"
+        profileUrl={process.env.NEXT_PUBLIC_LINKEDIN_PROFILE ?? ""}
         />
       </div>
 

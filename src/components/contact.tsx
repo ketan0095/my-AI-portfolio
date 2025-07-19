@@ -8,33 +8,33 @@ export function Contact() {
   // Contact information
   const contactInfo = {
     name: 'Ketan Shetye',
-    email: 'raphaelgiraud12@gmail.com',
-    handle: '@Raphael.Giraud',
+    email: 'shetyeketan18@gmail.com',
+    handle: '@Ketan.Shetye',
     socials: [
       {
         name: 'LinkedIn',
-        url: 'https://www.linkedin.com/in/raphael-giraud-60939519a/',
+        url: 'https://www.linkedin.com/in/ketan-shetye-769892133/',
       },
-      {
-        name: 'Youtube',
-        url: 'https://www.youtube.com/@toukoum',
-      },
+      // {
+      //   name: 'Youtube',
+      //   url: 'https://www.youtube.com/@toukoum',
+      // },
       {
         name: 'Instagram',
-        url: 'https://www.instagram.com/raphael.giraud/',
+        url: 'https://www.instagram.com/ketan_shetye/',
       },
-      {
-        name: 'Discord',
-        url: 'https://discord.com/users/toukoum',
-      },
+      // {
+      //   name: 'Discord',
+      //   url: 'https://discord.com/users/toukoum',
+      // },
       {
         name: 'Github',
-        url: 'https://github.com/toukoum',
+        url: 'hhttps://github.com/ketan0095',
       },
-      {
-        name: 'X',
-        url: 'https://x.com/toukoumcode',
-      },
+      // {
+      //   name: 'X',
+      //   url: 'https://x.com/toukoumcode',
+      // },
     ],
   };
 
