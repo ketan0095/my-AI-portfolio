@@ -426,9 +426,9 @@ const ProjectContent = ({ project }: { project: ProjectProps }) => {
 export const data = [
   {
     category: 'Startup Project',
-    title: 'Synto',
-    src: '/syntopreview.png',
-    content: <ProjectContent project={{ title: 'Synto' }} />,
+    title: 'Nak3D',
+    src: '/nak3d_preview.png',
+    content: <ProjectContent project={{ title: 'Nak3D' }} />,
   },
   {
     category: 'Fun Tool',
