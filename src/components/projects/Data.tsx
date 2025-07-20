@@ -35,8 +35,16 @@ const PROJECT_CONTENT = [
         url: 'https://x.com/nak3d_xyz',
       },
       {
+        name:'Instagram',
+        url:'https://www.instagram.com/nak3d_xyz/'
+      },
+      {
         name: 'Technical Video',
         url: 'https://www.youtube.com/watch?v=UIi7lLTrJq4',
+      },
+      {
+        name:'LinkedIn',
+        url:'https://www.linkedin.com/company/nak3d'
       },
       {
         name: 'Usage tutorial',
@@ -45,29 +53,13 @@ const PROJECT_CONTENT = [
     ],
     images: [
       {
-        src: '/synto1.png',
-        alt: 'Synto landing page',
+        src: '/nak3d_1.png',
+        alt: 'Nak3d landing page',
       },
       {
-        src: '/synto2.png',
-        alt: 'Synto chat interface',
-      },
-      {
-        src: '/synto3.png',
-        alt: 'Synto chat interface',
-      },
-      {
-        src: '/synto4.png',
-        alt: 'Synto chat interface',
-      },
-      {
-        src: '/synto5.png',
-        alt: 'Synto chat interface',
-      },
-      {
-        src: '/synto6.png',
-        alt: 'Synto chat interface',
-      },
+        src: '/nak3d_2.png',
+        alt: 'Nak3d Partners',
+      }
     ],
   },
   {
