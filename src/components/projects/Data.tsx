@@ -7,47 +7,40 @@ import { url } from 'inspector';
 // Enhanced project content array with all projects
 const PROJECT_CONTENT = [
   {
-    title: 'Synto',
+    title: 'Nak3D',
     description:
-      'Synto is an AI-powered interface that transforms complex blockchain interactions into simple, natural language commands. Whether you want to send tokens, stake assets, swap coins, or even create NFTs or liquidity pools, just tell Synto what to do — no manual wallet interactions, no technical jargon. One of my biggest projects yet',
+      "NAK3D is an AI-driven Web3 platform that lets creators monetize and manage digital assets with zero coding—just natural language commands for everything from NFTs to gated communities. It's all about smooth, automated blockchain workflows and making Web3 super accessible!",
     techStack: [
       'Next.js',
       'TailwindCSS',
       'Web3.js',
-      'shadcn-ui',
-      'TypeScript',
-      'Phantom Wallet',
-      'OpenAI API',
-      'Vercel AI SDK',
-      'Solana Agent kit',
-      'Neon',
-      'Prisma'
+      'Stable Diffusion Upcaler',
+      'Segment Anything Model (SAM, by Meta AI)',
+      'Meshy AI | InstantMesh |Unique3D',
+      'Blender Python API',
+
     ],
     date: '2025',
     links: [
       {
         name: 'website',
-        url: 'https://synto.fun',
+        url: 'https://www.nak3d.xyz/',
       },
       {
         name: 'Launch Video',
-        url: 'https://www.youtube.com/watch?v=4QUE2KgKDUw',
+        url: 'https://www.youtube.com/watch?v=GLVmny6vRxU',
       },
       {
         name: 'X',
-        url: 'https://x.com/chainSynto',
+        url: 'https://x.com/nak3d_xyz',
       },
       {
         name: 'Technical Video',
-        url: 'https://www.youtube.com/watch?v=1CjBLKPUwtA&feature=youtu.be',
-      },
-      {
-        name: 'Pitch Deck',
-        url: 'https://drive.google.com/file/d/1B3m44mEgv81rJHfjNfTKi147yX4raQed/view?usp=sharing',
+        url: 'https://www.youtube.com/watch?v=UIi7lLTrJq4',
       },
       {
         name: 'Usage tutorial',
-        url: 'https://www.youtube.com/watch?v=PRu1cfvT2bA',
+        url: 'https://www.youtube.com/watch?v=UIi7lLTrJq4',
       }
     ],
     images: [
