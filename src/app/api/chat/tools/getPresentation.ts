@@ -8,7 +8,7 @@ export const getPresentation = tool({
   execute: async () => {
     return {
       presentation:
-        "I'm Ketan Shetye, a 21-year-old developer specializing in AI at 42 Paris. Formerly a high-level mountain biker, I now intern at LightOn AI in Paris. I'm passionate about AI, tech, Entrepreneurship and SaaS tech.",
+        "I'm Ketan Shetye, a 25-year-old AI engineer from Melbourne, Australia. I'm deep into building real-time voice AI (currently at Sophiie, formerly Askgalore). I’m all about AI, automation, cool tech, and making SaaS products that turn wild ideas into reality.",
     };
   },
 });
