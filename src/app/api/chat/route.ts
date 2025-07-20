@@ -9,7 +9,6 @@ import { getPresentation } from './tools/getPresentation';
 import { getProjects } from './tools/getProjects';
 import { getResume } from './tools/getResume';
 import { getSkills } from './tools/getSkills';
-import { getSports } from './tools/getSport';
 
 export const maxDuration = 30;
 
@@ -41,7 +40,6 @@ export async function POST(req: Request) {
       getResume,
       getContact,
       getSkills,
-      getSports,
       getCrazy,
       getInternship,
     };
