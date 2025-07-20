@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Code, Cpu, PenTool, Users } from 'lucide-react';
 
 const Skills = () => {
+  // TODO: FETCH THIS FROM CETNRAL DATA SOURCE
   const skillsData = [
     {
       category: 'Frontend Development',
@@ -19,31 +20,32 @@ const Skills = () => {
         'Next.js',
         'React',
         'Vercel AI SDK',
-        'Gsap',
+        'Streamlit'
       ],
       color: 'bg-blue-50 text-blue-600 border border-blue-200',
     },
     {
-      category: 'Backend & Systems',
+      category: 'AI & Backend Development',
       icon: <Cpu className="h-5 w-5" />,
       skills: [
         'Unix',
-        'C',
-        'C++',
         'Python',
         'Typescript',
         'Git',
         'GitHub',
         'Docker',
-        'GCP',
+        'Azure',
         'PostgreSQL',
+        'AWS',
+        'Node.JS',
+        'Firebase'
       ],
       color: 'bg-emerald-50 text-emerald-600 border border-emerald-200',
     },
     {
       category: 'Design & Creative Tools',
       icon: <PenTool className="h-5 w-5" />,
-      skills: ['Figma', 'Davinci Code', 'Illustrator', 'Canva', 'Keynote'],
+      skills: ['Figma','Canva'],
       color: 'bg-indigo-50 text-indigo-600 border border-indigo-200',
     },
     {
@@ -57,6 +59,7 @@ const Skills = () => {
         'Teamwork',
         'Creativity',
         'Focus',
+        'Leadership'
       ],
       color: 'bg-amber-50 text-amber-600 border border-amber-200',
     },
@@ -64,17 +67,18 @@ const Skills = () => {
       category: 'AI & Fullstack Engineering',
       icon: <Cpu className="h-5 w-5" />,
       skills: [
-        'LLM Providers (ChatGPT, Whisper, Groq, Mistral & Claude)',
+        'LLM Providers (ChatGPT, Whisper, Groq, Mistral & Claude, Elevenlabs,Deepgram)',
         'AI Agents',
+        'Livekit/Pipecat Voice Agents',
         'Prompt engineering',
         'Vector databases (Weaviate, Pinecone)',
         'RAG (Retrieval-Augmented Generation)',
         'Tool routing & calling',
         'Hugging Face Transformers',
         'Vercel AI SDK',
-        'Supabase',
-        'Prisma',
-        'Next.js',
+        'ChromaDB',
+        'Langchain',
+        'Voice AI Automation (Vapi,n8n, Make.com, Retell)',
       ],
       color: 'bg-purple-50 text-purple-600 border border-purple-200',
     },
