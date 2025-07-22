@@ -57,6 +57,11 @@ const PROJECT_CONTENT = [
         alt: 'Nak3d landing page',
       },
       {
+        src: '/nak3d_3.png',
+        alt: 'Nak3d Process',
+      }
+      ,
+      {
         src: '/nak3d_2.png',
         alt: 'Nak3d Partners',
       }
