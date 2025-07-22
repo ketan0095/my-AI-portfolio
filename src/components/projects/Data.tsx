@@ -20,7 +20,7 @@ const PROJECT_CONTENT = [
       'Blender Python API',
 
     ],
-    date: '2025',
+    date: '2024',
     links: [
       {
         name: 'website',
@@ -68,33 +68,38 @@ const PROJECT_CONTENT = [
     ],
   },
   {
-    title: 'Rrate',
+    title: 'MachineAgent',
     description:
-      "Rrate is a fun website to allow user to compare his salary with the richest people in the world. Try it now it's online!",
-    techStack: ['Html', 'Css', 'Javascript'],
+      "Machine Agents AI by AskGalore enables businesses to deploy 3D AI Human Agents for sales, service & operations across industries",
+    techStack: ['Python','GenAI','Voice AI','Langchain','RAG','Pinecone','Fast API','Python','Next.js','MongoDB'],
     date: '2024',
+
     links: [
       {
         name: 'website',
-        url: 'https://rrate.app',
+        url: 'https://machineagents.ai',
       },
       {
-        name: 'github',
-        url: 'https://github.com/toukoum/Rrate',
+        name: 'LinkedIn',
+        url: 'https://www.linkedin.com/company/machine-agents/about/',
       },
     ],
     images: [
       {
-        src: '/rrate1.png',
-        alt: 'Rrate landing page',
+        src: '/MA_1.png',
+        alt: 'MA landing page',
       },
       {
-        src: '/rrate2.png',
-        alt: 'Rrate comparison page',
+        src: '/MA_2.png',
+        alt: 'MA Bot page',
       },
       {
-        src: '/rrate3.png',
-        alt: 'Rrate comparison page',
+        src: '/MA_2.png',
+        alt: 'MA Support',
+      },
+      {
+        src: '/MA_4.png',
+        alt: 'MA Pricing',
       },
     ],
   },
@@ -429,17 +434,20 @@ const ProjectContent = ({ project }: { project: ProjectProps }) => {
 
 // Main data export with updated content
 export const data = [
+  
+
+  // Voice AI platform
+  {
+    category: 'Voice AI Agent',
+    title: 'MachineAgent',
+    src: '/MA_preview.png',
+    content: <ProjectContent project={{ title: 'Rrate' }} />,
+  },
   {
     category: 'Startup Project',
     title: 'Nak3D',
     src: '/nak3d_preview.png',
     content: <ProjectContent project={{ title: 'Nak3D' }} />,
-  },
-  {
-    category: 'Fun Tool',
-    title: 'Rrate',
-    src: '/ratepreview.png',
-    content: <ProjectContent project={{ title: 'Rrate' }} />,
   },
   {
     category: 'Hackathon Winner',
