@@ -156,25 +156,38 @@ const PROJECT_CONTENT = [
     ],
   },
   {
-    title: 'Fitgear',
+    title: 'TerraBlu',
     description:
-      'Won the Gotta Go Hack IA by building Fitgear, a virtual voice seller accessible by QR code to improve the ratio between customers and sellers. Created an AI pipeline with API calls and a RAG system for natural language interactions.',
-    techStack: ['Next.js', 'TailwindCSS', 'OpenAI API', 'Langchain'],
+      'TerraBlu is a sustainable blockchain platform focused on transparent, eco-friendly solutions for real-world impact',
+    techStack: ['Next.js', 'TailwindCSS', 'Node.js','Python', 'Solidity','Ethereum','Polygon','web3.js','ether.js','Azure'],
     date: '2024',
     links: [
       {
-        name: 'Linkedin',
-        url: 'https://www.linkedin.com/posts/raphael-giraud-60939519a_hackathon-innovation-sporttech-activity-7210399263774674946-qSXq?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAC6vwikBVSEkS7XWktWS7y6GR3GHwAlKslc',
+        name:"Website",
+        url:"https://terrablu.life/"
+      },
+      {
+        name:"LinkedIn",
+        url:"https://www.linkedin.com/company/terrablu-climate-technologies-pvt-ltd/posts/?feedView=all"
+      }
+,
+      {
+        name: 'Info',
+        url: 'https://www.youtube.com/watch?v=rNp7ih8lyTg',
       },
     ],
     images: [
       {
-        src: '/fitgear2.png',
-        alt: 'Fitgear chatbot',
+        src: '/TB_1.png',
+        alt: 'TerraBlu',
       },
       {
-        src: '/fitgear1.png',
-        alt: 'Fitgear landing page',
+        src: '/TB_2.png',
+        alt: 'TerraBlu',
+      },
+      {
+        src: '/TB_3.png',
+        alt: 'TerraBlu',
       },
     ],
   },
@@ -460,39 +473,39 @@ export const data = [
     content: <ProjectContent project={{ title: 'Nak3D' }} />,
   },
   {
-    category: 'Hackathon Winner',
-    title: 'Fitgear',
-    src: '/fitgearpreview.png',
-    content: <ProjectContent project={{ title: 'Fitgear' }} />,
+    category: 'Blockchain Product',
+    title: 'TerraBlu',
+    src: '/TerraBlu_preview.png',
+    content: <ProjectContent project={{ title: 'TerraBlu' }} />,
   },
-  {
-    category: 'Business Intelligence',
-    title: 'Datai',
-    src: '/dataipreview.png',
-    content: <ProjectContent project={{ title: 'Datai' }} />,
-  },
-  {
-    category: '42 Project',
-    title: '3d Pong Game',
-    src: '/transcendancepreview.png',
-    content: <ProjectContent project={{ title: '3d Pong Game' }} />,
-  },
-  {
-    category: '42 Project',
-    title: 'Minishell',
-    src: '/minishellpreview.png',
-    content: <ProjectContent project={{ title: 'Minishell' }} />,
-  },
-  {
-    category: 'Automation',
-    title: 'YouBot',
-    src: '/youbotpreview.png',
-    content: <ProjectContent project={{ title: 'YouBot' }} />,
-  },
-  {
-    category: 'Web Development',
-    title: 'Old Portfolio',
-    src: '/oldportfoliopreview.png',
-    content: <ProjectContent project={{ title: 'Old Portfolio' }} />,
-  },
+  // {
+  //   category: 'Business Intelligence',
+  //   title: 'Datai',
+  //   src: '/dataipreview.png',
+  //   content: <ProjectContent project={{ title: 'Datai' }} />,
+  // },
+  // {
+  //   category: '42 Project',
+  //   title: '3d Pong Game',
+  //   src: '/transcendancepreview.png',
+  //   content: <ProjectContent project={{ title: '3d Pong Game' }} />,
+  // },
+  // {
+  //   category: '42 Project',
+  //   title: 'Minishell',
+  //   src: '/minishellpreview.png',
+  //   content: <ProjectContent project={{ title: 'Minishell' }} />,
+  // },
+  // {
+  //   category: 'Automation',
+  //   title: 'YouBot',
+  //   src: '/youbotpreview.png',
+  //   content: <ProjectContent project={{ title: 'YouBot' }} />,
+  // },
+  // {
+  //   category: 'Web Development',
+  //   title: 'Old Portfolio',
+  //   src: '/oldportfoliopreview.png',
+  //   content: <ProjectContent project={{ title: 'Old Portfolio' }} />,
+  // },
 ];

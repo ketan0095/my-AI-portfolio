@@ -15,26 +15,14 @@ export function Contact() {
         name: 'LinkedIn',
         url: 'https://www.linkedin.com/in/ketan-shetye-769892133/',
       },
-      // {
-      //   name: 'Youtube',
-      //   url: 'https://www.youtube.com/@toukoum',
-      // },
       {
         name: 'Instagram',
         url: 'https://www.instagram.com/ketan_shetye/',
       },
-      // {
-      //   name: 'Discord',
-      //   url: 'https://discord.com/users/toukoum',
-      // },
       {
         name: 'Github',
         url: 'hhttps://github.com/ketan0095',
       },
-      // {
-      //   name: 'X',
-      //   url: 'https://x.com/toukoumcode',
-      // },
     ],
   };
 
