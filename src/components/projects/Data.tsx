@@ -104,51 +104,54 @@ const PROJECT_CONTENT = [
     ],
   },
   {
-    title: 'Defai',
+    title: 'SophiieAI',
     description:
-      "We Win ETHOXford hackathon by building DEFAI. DEFAI stands for Decentralized Finance Artificial Intelligence. It's an AI-powered chat interface that simplifies on-chain operations on the Avalanche blockchain by allowing users to interact using natural language. This makes complex DeFi operations accessible even for those with limited technical expertise.",
+      "SophiieAI is a real-time voice agent platform that automates customer conversations using AI-powered calls with human-like understanding and response.",
     techStack: [
-      'Next.js',
+      'React.js',
       'TailwindCSS',
-      'shadcn-ui',
-      'Vercel AI SDK',
+      'Python',
+      'Livekit AI SDK',
       'TypeScript',
+      'Voice AI Agents',
+      'Realtime AI Systems',
+      'Planetscale',
+      'AWS',
+      'OpenAI(LLM)',
+      'Deepgram(STT)',
+      'Elevenlabs(TTS)'
     ],
     date: '2025',
     links: [
       {
         name: 'website',
-        url: 'https://dorahacks.io/buidl/22605',
-      },
-      {
-        name: 'github',
-        url: 'https://github.com/toukoum/DEFAI',
+        url: 'https://sophiie.ai/',
       },
       {
         name: 'LinkedIn',
-        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7299337190151483392/',
+        url: 'https://www.linkedin.com/company/sophiie-ai/posts/?feedView=all',
       },
       {
         name: 'Youtube Video',
-        url: 'https://www.youtube.com/watch?v=N9O7los4-ng&t=34s&ab_channel=Toukoum',
+        url: 'https://www.youtube.com/shorts/FAaOb09xkoc',
       }
     ],
     images: [
       {
-        src: '/defai1.png',
-        alt: 'Landing Page of Defai',
+        src: '/sophiie_1.png',
+        alt: 'Landing Page of SophiieAI',
       },
       {
-        src: '/defai2.png',
-        alt: 'Confirmation popup of Defai',
+        src: '/sophiie_2.png',
+        alt: 'Landing Page of SophiieAI',
       },
       {
-        src: '/defai3.png',
-        alt: 'Chatbot of Defai',
+        src: '/sophiie_3.png',
+        alt: 'Chatbot of SophiieAI',
       },
       {
-        src: '/defai4.jpeg',
-        alt: 'Winner team',
+        src: '/sophiie_4.png',
+        alt: 'SophiieAI',
       },
     ],
   },
@@ -434,26 +437,27 @@ const ProjectContent = ({ project }: { project: ProjectProps }) => {
 
 // Main data export with updated content
 export const data = [
-  
+  // AI office Manager
+  {
+    category: 'AI Office Manager',
+    title: 'SophiieAI',
+    src: '/sophiie_preview.png',
+    content: <ProjectContent project={{ title: 'SophiieAI' }} />,
+  },
 
   // Voice AI platform
   {
     category: 'Voice AI Agent',
     title: 'MachineAgent',
     src: '/MA_preview.png',
-    content: <ProjectContent project={{ title: 'Rrate' }} />,
+    content: <ProjectContent project={{ title: 'MachineAgent' }} />,
   },
+  // 
   {
-    category: 'Startup Project',
+    category: 'AI Fashion',
     title: 'Nak3D',
     src: '/nak3d_preview.png',
     content: <ProjectContent project={{ title: 'Nak3D' }} />,
-  },
-  {
-    category: 'Hackathon Winner',
-    title: 'Defai',
-    src: '/defaipreview.png',
-    content: <ProjectContent project={{ title: 'Defai' }} />,
   },
   {
     category: 'Hackathon Winner',
