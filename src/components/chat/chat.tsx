@@ -287,6 +287,10 @@ const Chat = () => {
           }
         />
         <div className="">
+          <GithubButton
+        repoUrl={process.env.NEXT_PUBLIC_GITHUB_PROFILE ?? ""}
+        /></div>
+        <div className="">
           <LinkedinButton
         profileUrl={process.env.NEXT_PUBLIC_LINKEDIN_PROFILE ?? ""}
         />

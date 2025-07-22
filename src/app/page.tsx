@@ -31,7 +31,7 @@ const questionConfig = [
   { key: 'Me', color: '#329696', icon: Laugh },
   { key: 'Projects', color: '#3E9858', icon: BriefcaseBusiness },
   { key: 'Skills', color: '#856ED9', icon: Layers },
-  { key: 'Fun', color: '#B95F9D', icon: PartyPopper },
+  // { key: 'Fun', color: '#B95F9D', icon: PartyPopper },
   { key: 'Contact', color: '#C19433', icon: UserRoundSearch },
 ] as const;
 
@@ -95,13 +95,13 @@ export default function Home() {
 
       {/* GitHub button */}
       <div className="absolute top-6 right-8 z-20 flex gap-3">
-        {/* <GithubButton
+        <GithubButton
           //targetStars={68}
           animationDuration={1.5}
           label="Star"
           size={'sm'}
-          repoUrl="https://github.com/ketan0095"
-        /> */}
+          repoUrl={process.env.NEXT_PUBLIC_LINKEDIN_PROFILE ?? ""}
+        />
         <LinkedinButton
         profileUrl={process.env.NEXT_PUBLIC_LINKEDIN_PROFILE ?? ""}
         />
@@ -133,22 +133,22 @@ export default function Home() {
         </div>
 
         <h2 className="text-secondary-foreground mt-1 text-xl font-semibold md:text-2xl">
-          Hey, Ketan 👋
+          Hey, I’m Ketan👋
         </h2>
-        <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-          AI portfolio
+        <h1 className="text-2xl font-bold sm:text-3xl md:text-6xl lg:text-5xl">
+          Real-Time Voice AI Architect
         </h1>
       </motion.div>
 
       {/* centre memoji */}
       <div className="relative z-10 h-52 w-48 overflow-hidden sm:h-72 sm:w-72">
         <Image
-          src="/landing-memojis.png"
+          src="/picofme.png"
           alt="Hero memoji"
-          width={2000}
-          height={2000}
+          width={1024}
+          height={1024}
           priority
-          className="translate-y-14 scale-[2] object-cover"
+          // className="translate-y-14 scale-[2] object-cover"
         />
       </div>
 
@@ -188,16 +188,16 @@ export default function Home() {
         </form>
 
         {/* quick-question grid */}
-        <div className="mt-4 grid w-full max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3 md:grid-cols-5">
+        <div className="mt-4 grid w-full max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3 md:grid-cols-4">
           {questionConfig.map(({ key, color, icon: Icon }) => (
             <Button
               key={key}
               onClick={() => goToChat(questions[key])}
               variant="outline"
-              className="border-border hover:bg-border/30 aspect-square w-full cursor-pointer rounded-2xl border bg-white/30 py-8 shadow-none backdrop-blur-lg active:scale-95 md:p-10"
+              className="border-border hover:bg-border/30 aspect-square w-full cursor-pointer rounded-2xl border bg-white/30 py-8 shadow backdrop-blur-lg active:scale-95 md:p-10"
             >
               <div className="flex h-full flex-col items-center justify-center gap-1 text-gray-700">
-                <Icon size={22} strokeWidth={2} color={color} />
+                <Icon size={25} strokeWidth={2} color={color} />
                 <span className="text-xs font-medium sm:text-sm">{key}</span>
               </div>
             </Button>

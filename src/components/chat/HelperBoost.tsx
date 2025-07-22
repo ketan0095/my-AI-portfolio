@@ -46,7 +46,7 @@ const questionConfig = [
   { key: 'Me', color: '#329696', icon: Laugh },
   { key: 'Projects', color: '#3E9858', icon: BriefcaseBusiness },
   { key: 'Skills', color: '#856ED9', icon: Layers },
-  { key: 'Fun', color: '#B95F9D', icon: PartyPopper },
+  // { key: 'Fun', color: '#B95F9D', icon: PartyPopper },
   { key: 'Contact', color: '#C19433', icon: UserRoundSearch },
 ];
 
@@ -100,17 +100,17 @@ const questionsByCategory = [
       'How was your experience at École 42?',
     ],
   },
-  {
-    id: 'fun',
-    name: 'Fun',
-    icon: PartyPopper,
-    questions: [
-      'Mountain Bike you said?? Show me!',
-      "What's the craziest thing you've ever done?",
-      'Mac or PC?',
-      'What are you certain about that 90% get wrong?',
-    ],
-  },
+  // {
+  //   id: 'fun',
+  //   name: 'Fun',
+  //   icon: PartyPopper,
+  //   questions: [
+  //     'Mountain Bike you said?? Show me!',
+  //     "What's the craziest thing you've ever done?",
+  //     'Mac or PC?',
+  //     'What are you certain about that 90% get wrong?',
+  //   ],
+  // },
   {
     id: 'contact',
     name: 'Contact & Future',
