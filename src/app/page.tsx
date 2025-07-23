@@ -3,7 +3,7 @@
 import FluidCursor from '@/components/FluidCursor';
 import { Button } from '@/components/ui/button';
 import { GithubButton } from '@/components/ui/github-button';
-import {LinkedinButton} from '@/components/ui/linkedin-button'
+import { LinkedinButton } from '@/components/ui/linkedin-button'
 import WelcomeModal from '@/components/welcome-modal';
 import { motion } from 'framer-motion';
 import {
@@ -103,7 +103,7 @@ export default function Home() {
           repoUrl={process.env.NEXT_PUBLIC_LINKEDIN_PROFILE ?? ""}
         />
         <LinkedinButton
-        profileUrl={process.env.NEXT_PUBLIC_LINKEDIN_PROFILE ?? ""}
+          profileUrl={process.env.NEXT_PUBLIC_LINKEDIN_PROFILE ?? ""}
         />
       </div>
 
@@ -141,16 +141,17 @@ export default function Home() {
       </motion.div>
 
       {/* centre memoji */}
-      <div className="relative z-10 h-52 w-48 overflow-hidden sm:h-72 sm:w-72">
+      <div className="relative z-10 h-52 w-52 overflow-hidden sm:h-72 sm:w-72 rounded-full">
         <Image
-          src="/picofme.png"
+          src="/profile_pic1.jpeg"
           alt="Hero memoji"
           width={1024}
           height={1024}
           priority
-          // className="translate-y-14 scale-[2] object-cover"
+          className="object-cover rounded-full transition-transform duration-300 ease-in-out hover:scale-105"
         />
       </div>
+
 
       {/* input + quick buttons */}
       <motion.div

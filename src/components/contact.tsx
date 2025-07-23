@@ -46,7 +46,7 @@ export function Contact() {
           </span> */}
 
           <img
-            src="profile_pic.jpeg" // Replace with your image path
+            src="profile_pic1.jpeg" // Replace with your image path
             alt="Contact"
             className="mt-4 sm:mt-0 h-16 w-16 rounded-full object-cover border"
           />

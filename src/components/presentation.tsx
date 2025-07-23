@@ -13,7 +13,7 @@ export function Presentation() {
     // Add a newline character after the emoji
     description:
       "Hey 👋\nI'm Ketan, your friendly neighborhood AI engineer! I specialize in real-time Voice AI and backend wizardry. Currently engineering at Sophiie, ex-Askgalore hackathon champ. Passionate about AI, automation, cool tech, and building stuff that actually makes life easier. Let's geek out together!",
-    src: '/profile_pic.jpeg',
+    src: '/profile_pic1.jpeg',
     fallbackSrc:
       'https://images.unsplash.com/photo-1610216705422-caa3fcb6d158?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3',
   };

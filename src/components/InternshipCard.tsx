@@ -23,7 +23,7 @@ const InternshipCard = () => {
           {/* Avatar placeholder */}
           <div className="bg-muted h-32 w-32 overflow-hidden rounded-full shadow-md">
             <img
-              src="/profile_pic.jpeg"
+              src="/profile_pic1.jpeg"
               alt="Ketan's avatar"
               className="h-full w-full object-cover"
             />
