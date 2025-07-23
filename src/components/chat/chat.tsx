@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'sonner';
-
+import { Home } from 'lucide-react';
 // Component imports
 import ChatBottombar from '@/components/chat/chat-bottombar';
 import ChatLanding from '@/components/chat/chat-landing';
@@ -77,34 +77,19 @@ const Avatar = dynamic<AvatarProps>(
       // Conditional rendering based on detection
       return (
         <div
-          className={`flex items-center justify-center rounded-full transition-all duration-300 ${hasActiveTool ? 'h-20 w-20' : 'h-28 w-28'}`}
+          className={`flex items-center justify-center rounded-full transition-all duration-300 ${
+            hasActiveTool ? 'h-20 w-20' : 'h-28 w-28'
+          }`}
         >
           <div
-            className="relative cursor-pointer"
+            className="relative cursor-pointer flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-full p-4"
             onClick={() => (window.location.href = '/')}
           >
-            {isIOS() ? (
-              <img
-                src="/landing-memojis.png"
-                alt="iOS avatar"
-                className="h-full w-full scale-[1.8] object-contain"
-              />
-            ) : (
-              <video
-                ref={videoRef}
-                className="h-full w-full scale-[1.8] object-contain"
-                muted
-                playsInline
-                loop
-              >
-                <source src="/final_memojis.webm" type="video/webm" />
-                <source src="/final_memojis_ios.mp4" type="video/mp4" />
-              </video>
-            )}
+            <Home className="w-6 h-6 text-gray-700" />
           </div>
         </div>
-      );
-    }),
+          );
+        }),
   { ssr: false }
 );
 
