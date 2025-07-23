@@ -71,13 +71,29 @@ export function Contact() {
           {/* Social Links */}
           <div className="flex flex-wrap justify-between items-center gap-y-5">
             {/* Social links on left */}
-            <div className="flex flex-wrap gap-x-6 gap-y-5 sm:gap-x-8">
+            <div className="flex flex-wrap gap-x-4 gap-y-3 sm:gap-x-6">
               {contactInfo.socials.map((social) => (
                 <button
                   key={social.name}
-                  className="text-muted-foreground hover:text-foreground cursor-pointer text-sm transition-colors"
                   onClick={() => openLink(social.url)}
                   title={social.name}
+                  className="
+                        px-3 py-1.5 
+                        bg-gray-100 dark:bg-gray-800 
+                        text-gray-700 dark:text-gray-200 
+                        rounded-full 
+                        shadow-sm 
+                        hover:bg-blue-600 hover:text-white 
+                        transition 
+                        duration-300 
+                        ease-in-out 
+                        text-sm
+                        font-semibold
+                        cursor-pointer
+                        select-none
+                        focus:outline-none
+                        focus:ring-2 focus:ring-blue-500
+                      "
                 >
                   {social.name}
                 </button>
@@ -86,7 +102,7 @@ export function Contact() {
 
             {/* Download Resume button on right */}
             <button
-              onClick={() => openLink('Ketan_Shetye_resume.pdf')} 
+              onClick={() => openLink('Ketan_Shetye_resume.pdf')}
               className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 transition-colors"
             >
               Download Resume

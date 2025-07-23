@@ -1,5 +1,5 @@
 export async function GET(req: Request) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_GITHUB_PROFILE}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_GITHUB_API}`, {
     headers: {
       Authorization: `Bearer ${process.env.GIT_TOKEN}`,
     },
