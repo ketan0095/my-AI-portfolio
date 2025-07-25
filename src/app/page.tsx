@@ -18,6 +18,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import VoiceAgent from '@/components/VoiceAgent';
+import ChatWithAgent from '@/components/ChatWithAgent';
 
 /* ---------- quick-question data ---------- */
 const questions = {
@@ -207,7 +208,8 @@ export default function Home() {
         </div>
 
         {/* VOICE AGENT */}
-        <VoiceAgent />
+        {/* <h1 className="text-2xl font-semibold mb-4">Voice Agent Chat</h1> */}
+      <ChatWithAgent />
       </motion.div>
 
 
