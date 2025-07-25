@@ -17,6 +17,7 @@ import {
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import VoiceAgent from '@/components/VoiceAgent';
 
 /* ---------- quick-question data ---------- */
 const questions = {
@@ -204,7 +205,12 @@ export default function Home() {
             </Button>
           ))}
         </div>
+
+        {/* VOICE AGENT */}
+        <VoiceAgent />
       </motion.div>
+
+
       <FluidCursor />
     </div>
   );
