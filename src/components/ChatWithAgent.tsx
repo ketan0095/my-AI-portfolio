@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Room, RemoteAudioTrack, Track } from 'livekit-client';
 import { createLocalAudioTrack } from 'livekit-client';
-
+import {useTracks,GridLayout,ParticipantTile} from '@livekit/components-react';
 
 export async function getMicrophoneTrack() {
   try {
@@ -15,12 +15,35 @@ export async function getMicrophoneTrack() {
   }
 }
 
-export default function ChatWithAgent() {
+export function MyVideoConference() {
+  // `useTracks` returns all camera and screen share tracks. If a user
+  // joins without a published camera track, a placeholder track is returned.
+  const tracks = useTracks(
+    [
+      { source: Track.Source.Camera, withPlaceholder: true },
+      { source: Track.Source.ScreenShare, withPlaceholder: false },
+    ],
+    { onlySubscribed: false },
+  );
+  return (
+    <GridLayout tracks={tracks} style={{ height: 'calc(100vh - var(--lk-control-bar-height))' }}>
+      {/* The GridLayout accepts zero or one child. The child is used
+      as a template to render all passed in tracks. */}
+      <ParticipantTile />
+    </GridLayout>
+  );
+}
+
+type ChatWithAgentProps = {
+  room_global: Room;
+};
+
+export default function ChatWithAgent({room_global}:ChatWithAgentProps) {
     const [isConnected, setIsConnected] = useState(false);
     const [micOn, setMicOn] = useState(false);
     const [transcripts, setTranscripts] = useState<string[]>([]);
     const [connected, setConnected] = useState(false)
-    const [room, setRoom] = useState<Room | null>(null);
+    // const [room, setRoom] = useState<Room | null>(null);
 
     type ConnectOptions = {
         onTranscription?: (text: string) => void;
@@ -36,7 +59,7 @@ export default function ChatWithAgent() {
         const res = await fetch('/api/livekit-token?identity=visitor-123');
         const { token } = await res.json();
 
-        const room = new Room();
+        const room = room_global;
 
         await room.connect(livekitUrl, token);
 

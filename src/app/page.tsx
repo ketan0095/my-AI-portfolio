@@ -19,6 +19,16 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import VoiceAgent from '@/components/VoiceAgent';
 import ChatWithAgent from '@/components/ChatWithAgent';
+import { MyVideoConference } from '@/components/ChatWithAgent';
+import {
+  ControlBar,
+  GridLayout,
+  ParticipantTile,
+  RoomAudioRenderer,
+  useTracks,
+  RoomContext,
+} from '@livekit/components-react';
+import { Room, Track } from 'livekit-client';
 
 /* ---------- quick-question data ---------- */
 const questions = {
@@ -42,6 +52,10 @@ export default function Home() {
   const [input, setInput] = useState('');
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const goToVoiceAgent = () => {
+    router.push(`/voice-agent`);
+  }
 
   const goToChat = (query: string) =>
     router.push(`/chat?query=${encodeURIComponent(query)}`);
@@ -82,6 +96,14 @@ export default function Home() {
     linkMp4.href = '/final_memojis_ios.mp4';
     document.head.appendChild(linkMp4);
   }, []);
+  const room = 'quickstart-room';
+  const name = 'quickstart-user';
+  const roomInstance = new Room({
+    // Optimize video quality for each participant's screen
+    adaptiveStream: true,
+    // Enable automatic audio/video quality optimization
+    dynacast: true,
+  });
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pb-10 md:pb-20">
@@ -209,7 +231,17 @@ export default function Home() {
 
         {/* VOICE AGENT */}
         {/* <h1 className="text-2xl font-semibold mb-4">Voice Agent Chat</h1> */}
-      <ChatWithAgent />
+
+        <Button
+              onClick={() => goToVoiceAgent()}
+              variant="outline"
+              className="border-border hover:bg-border/30 aspect-square w-full cursor-pointer rounded-2xl border bg-white/30 py-8 shadow backdrop-blur-lg active:scale-95 md:p-10"
+            >
+              <div className="flex h-full flex-col items-center justify-center gap-1 text-gray-700">
+                <span className="text-xs font-medium sm:text-sm">Talk to Me</span>
+              </div>
+            </Button>
+
       </motion.div>
 
 
