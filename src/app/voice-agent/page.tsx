@@ -11,7 +11,6 @@ import {
 import { Room, Track } from 'livekit-client';
 import '@livekit/components-styles';
 import { useEffect, useState } from 'react';
-import ChatWithAgent from '@/components/ChatWithAgent';
 
 export default function VoiceAgentPage() {
   const roomName = 'voice-agent-room';
@@ -25,7 +24,7 @@ export default function VoiceAgentPage() {
     let mounted = true;
     (async () => {
       try {
-        const resp = await fetch(`/api/token?room=${roomName}&username=${userName}`);
+        const resp = await fetch(`/api/livekit-token?room=${roomName}&username=${userName}`);
         const data = await resp.json();
         if (!mounted) return;
         if (data.token) {
@@ -48,9 +47,6 @@ export default function VoiceAgentPage() {
         <MyVideoConference />
         <RoomAudioRenderer />
         <ControlBar />
-
-        {/* 👇 Voice Agent Chat */}
-        <ChatWithAgent room_global={roomInstance} />
       </div>
     </RoomContext.Provider>
   );
