@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import ToastProvider from '@/components/toast/ToastProvider';
+import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 
 // Load Inter font for non-Apple devices
@@ -84,6 +86,7 @@ export default function RootLayout({
         >
           <main className="flex min-h-screen flex-col">
             {children}
+            < ToastProvider/>
           </main>
           <Toaster />
         </ThemeProvider>
