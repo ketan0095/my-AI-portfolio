@@ -8,18 +8,31 @@ import {
   RoomContext,
   useTracks,
 } from '@livekit/components-react';
+import { v4 as uuidv4 } from 'uuid';
 import { Room, Track } from 'livekit-client';
 import '@livekit/components-styles';
 import { useEffect, useState } from 'react';
 
 export default function VoiceAgentPage() {
-  const roomName = 'voice-agent-room';
-  const userName = 'voice-user';
+
+  // dynamically generate room name & username
+  const roomName = `voice-agent-room-${uuidv4()}`;
+  const userName = `voice-user-${Math.floor(Math.random() * 10000)}`;
+  
   const [roomInstance] = useState(() => new Room({
     adaptiveStream: true,
     dynacast: true,
   }));
 
+  // control bar visual control
+  const visibleControls = {
+    camera: false,
+    screenShare: false,
+    microphone: true,
+    chat: false,
+  };
+
+  // Generating livekit token here and create room
   useEffect(() => {
     let mounted = true;
     (async () => {
@@ -46,7 +59,7 @@ export default function VoiceAgentPage() {
       <div data-lk-theme="default" style={{ height: '100dvh' }}>
         <MyVideoConference />
         <RoomAudioRenderer />
-        <ControlBar />
+        <ControlBar controls={visibleControls} />
       </div>
     </RoomContext.Provider>
   );
