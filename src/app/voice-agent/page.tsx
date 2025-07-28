@@ -98,25 +98,18 @@ export default function VoiceAgentPage() {
 }
 
 function MyVideoConference() {
-  const avatarIdentity = 'Ketan-voice-agent';
   const tracks = useTracks(
     [
       { source: Track.Source.Camera, withPlaceholder: false }, // don't show camera
     ],
     { onlySubscribed: true,
+      // Only include tracks that the local participant is currently subscribed to.
+      // This helps avoid rendering placeholders or unsubscribed tracks.
       updateOnlyOn: [RoomEvent.TrackSubscribed, RoomEvent.TrackUnsubscribed], 
+      // Re-render the component only when a track is subscribed or unsubscribed.
+      // This avoids unnecessary updates and improves performance.
      },
   )
-
-  // Log each track's participant identity and other details
-  tracks.forEach((t) => {
-    const kind = t.publication ? t.publication.kind : 'unknown';
-    console.log(`Track from participant: ${t.participant.identity}, kind: ${kind}, source: ${t.source}`);
-  });
-
-  // Then filter
-  const filteredTracks = tracks.filter((t) => t.participant.identity === avatarIdentity);
-
 
   return (
     <GridLayout
