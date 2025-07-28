@@ -6,10 +6,10 @@ import {
   ParticipantTile,
   RoomAudioRenderer,
   RoomContext,
-  useTracks,
+  useTracks
 } from '@livekit/components-react';
 import { v4 as uuidv4 } from 'uuid';
-import { Room, Track } from 'livekit-client';
+import { Room, RoomEvent, Track } from 'livekit-client';
 import '@livekit/components-styles';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
@@ -17,10 +17,10 @@ import { toast } from 'react-toastify';
 
 export default function VoiceAgentPage() {
 
+
   // dynamically generate room name & username
   const roomName = `voice-agent-room-${uuidv4()}`;
   const userName = `voice-user-${Math.floor(Math.random() * 10000)}`;
-
   const [roomInstance] = useState(() => new Room({
     adaptiveStream: true,
     dynacast: true,
@@ -98,13 +98,25 @@ export default function VoiceAgentPage() {
 }
 
 function MyVideoConference() {
+  const avatarIdentity = 'Ketan-voice-agent';
   const tracks = useTracks(
     [
-      { source: Track.Source.Camera, withPlaceholder: true },
-      { source: Track.Source.ScreenShare, withPlaceholder: false },
+      { source: Track.Source.Camera, withPlaceholder: false }, // don't show camera
     ],
-    { onlySubscribed: false },
-  );
+    { onlySubscribed: true,
+      updateOnlyOn: [RoomEvent.TrackSubscribed, RoomEvent.TrackUnsubscribed], 
+     },
+  )
+
+  // Log each track's participant identity and other details
+  tracks.forEach((t) => {
+    const kind = t.publication ? t.publication.kind : 'unknown';
+    console.log(`Track from participant: ${t.participant.identity}, kind: ${kind}, source: ${t.source}`);
+  });
+
+  // Then filter
+  const filteredTracks = tracks.filter((t) => t.participant.identity === avatarIdentity);
+
 
   return (
     <GridLayout
