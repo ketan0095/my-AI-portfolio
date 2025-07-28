@@ -26,6 +26,8 @@ export default function VoiceAgentPage() {
     dynacast: true,
   }));
 
+  const [agentJoined, setAgentJoined] = useState(false);
+
 
   // control bar visual control
   const visibleControls = {
@@ -60,8 +62,24 @@ export default function VoiceAgentPage() {
 
         // Step 3: Connect to LiveKit room if token received
         if (data.token) {
-          await roomInstance.connect(process.env.NEXT_PUBLIC_LIVEKIT_URL!, data.token);
+          const connect =await roomInstance.connect(process.env.NEXT_PUBLIC_LIVEKIT_URL!, data.token);
+          console.log("connect",connect)
         }
+
+        // Listen for new participant connection
+        roomInstance.on(RoomEvent.ParticipantConnected, (participant) => {
+          console.log('Agent joined:', participant.identity);
+          if (participant.identity?.startsWith('tavus')) {
+            console.log('Agent joined:', participant.identity);
+            setAgentJoined(true);
+
+            // Unmute local mic when agent joins
+            const localParticipant = roomInstance.localParticipant;
+            if (!localParticipant.isMicrophoneEnabled) {
+              localParticipant.setMicrophoneEnabled(true);
+            }
+          }
+        });
       } catch (err) {
         // Handle permission denial or other errors
         toast.error('Unable to access microphone or connect. Please check permissions.');
@@ -88,9 +106,17 @@ export default function VoiceAgentPage() {
     >
       <RoomContext.Provider value={roomInstance}>
         <div data-lk-theme="default" style={{ height: '100dvh' }}>
-          <MyVideoConference />
-          <RoomAudioRenderer />
-          <ControlBar controls={visibleControls} />
+          {!agentJoined ? (
+            <div className="flex h-full items-center justify-center text-xl font-semibold text-black">
+              Waiting for the agent..
+            </div>
+          ) : (
+            <>
+              <MyVideoConference />
+              <RoomAudioRenderer />
+              <ControlBar controls={visibleControls} />
+            </>
+          )}
         </div>
       </RoomContext.Provider>
     </motion.div>
