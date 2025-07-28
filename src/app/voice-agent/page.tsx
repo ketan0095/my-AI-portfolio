@@ -111,6 +111,11 @@ function MyVideoConference() {
      },
   )
 
+  tracks.forEach((t) => {
+    const kind = t.publication ? t.publication.kind : 'unknown';
+    console.log(`Track from participant: ${t.participant.identity}, kind: ${kind}, source: ${t.source}`);
+  });
+
   return (
     <GridLayout
       tracks={tracks}
