@@ -130,19 +130,20 @@ export const Carousel = ({
             {items.map((item, index) => (
               <motion.div
                 initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.5,
-                    delay: 0.2 * index,
-                    ease: 'easeOut',
-                    once: true,
-                  },
-                }}
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      type: 'tween',       // required for ease
+                      duration: 0.5,
+                      delay: 0.2 * index,
+                      ease: 'easeOut',
+                      // remove 'once' from here
+                    },
+                  }}
                 key={'card' + index}
                 className="rounded-3xl last:pr-[5%] md:last:pr-[33%]"
               >

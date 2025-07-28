@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { GithubButton } from '@/components/ui/github-button';
 import { LinkedinButton } from '@/components/ui/linkedin-button'
 import WelcomeModal from '@/components/welcome-modal';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import {
   ArrowRight,
   BriefcaseBusiness,
@@ -48,22 +48,34 @@ export default function Home() {
     router.push(`/chat?query=${encodeURIComponent(query)}`);
 
   /* hero animations (unchanged) */
-  const topElementVariants = {
-    hidden: { opacity: 0, y: -60 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: 'ease', duration: 0.8 },
+  const topElementVariants: Variants = {
+  hidden: { opacity: 0, y: -60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'tween',        
+      ease: 'easeInOut',      
+      duration: 0.8,
     },
-  };
-  const bottomElementVariants = {
-    hidden: { opacity: 0, y: 80 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: 'ease', duration: 0.8, delay: 0.2 },
+  },
+};
+  const bottomElementVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 80,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'tween',
+      ease: 'easeInOut',
+      duration: 0.8,
+      delay: 0.2,
     },
-  };
+  },
+};
 
   useEffect(() => {
     // Précharger les assets du chat en arrière-plan

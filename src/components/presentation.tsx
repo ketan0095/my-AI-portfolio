@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import React from 'react';
 
@@ -19,28 +19,33 @@ export function Presentation() {
   };
 
   // Animation variants for text elements
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+const textVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'tween',
+      duration: 0.6,
+      ease: 'easeOut',
     },
-  };
+  },
+};
 
-  // Animation for the entire paragraph rather than word-by-word
-  const paragraphAnimation = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut',
-        delay: 0.2,
-      },
+// Animation for the entire paragraph rather than word-by-word
+const paragraphAnimation: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'tween',
+      duration: 0.6,
+      ease: 'easeOut',
+      delay: 0.2,
     },
-  };
+  },
+};
 
   return (
     <div className="mx-auto w-full max-w-5xl py-6 font-sans">

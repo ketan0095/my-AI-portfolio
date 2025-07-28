@@ -6,7 +6,7 @@ import {
 } from '@/components/ui/chat/chat-bubble';
 import { ChatRequestOptions } from 'ai';
 import { Message } from 'ai/react';
-import { motion } from 'framer-motion';
+import { motion, MotionProps } from 'framer-motion';
 import ChatMessageContent from './chat-message-content';
 import ToolRenderer from './tool-renderer';
 
@@ -19,11 +19,12 @@ interface SimplifiedChatViewProps {
   addToolResult?: (args: { toolCallId: string; result: string }) => void;
 }
 
-const MOTION_CONFIG = {
+const MOTION_CONFIG: MotionProps = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: 20 },
   transition: {
+    type: 'tween',         
     duration: 0.3,
     ease: 'easeOut',
   },
