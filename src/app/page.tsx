@@ -49,33 +49,33 @@ export default function Home() {
 
   /* hero animations (unchanged) */
   const topElementVariants: Variants = {
-  hidden: { opacity: 0, y: -60 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'tween',        
-      ease: 'easeInOut',      
-      duration: 0.8,
+    hidden: { opacity: 0, y: -60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'tween',
+        ease: 'easeInOut',
+        duration: 0.8,
+      },
     },
-  },
-};
+  };
   const bottomElementVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 80,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'tween',
-      ease: 'easeInOut',
-      duration: 0.8,
-      delay: 0.2,
+    hidden: {
+      opacity: 0,
+      y: 80,
     },
-  },
-};
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'tween',
+        ease: 'easeInOut',
+        duration: 0.8,
+        delay: 0.2,
+      },
+    },
+  };
 
   useEffect(() => {
     // Précharger les assets du chat en arrière-plan
@@ -175,63 +175,70 @@ export default function Home() {
         animate="visible"
         className="z-10 mt-4 flex w-full flex-col items-center justify-center md:px-0"
       >
-        {/* free-form question */}
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (input.trim()) goToChat(input.trim());
-          }}
-          className="relative w-full max-w-lg"
-        >
-          <div className="mx-auto flex items-center rounded-full border border-neutral-200 bg-white/30 py-2.5 pr-2 pl-6 backdrop-blur-lg transition-all hover:border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600">
-            <input
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask me anything…"
-              className="w-full border-none bg-transparent text-base text-neutral-800 placeholder:text-neutral-500 focus:outline-none dark:text-neutral-200 dark:placeholder:text-neutral-500"
-            />
-            <button
-              type="submit"
-              disabled={!input.trim()}
-              aria-label="Submit question"
-              className="flex items-center justify-center rounded-full bg-[#0171E3] p-2.5 text-white transition-colors hover:bg-blue-600 disabled:opacity-70 dark:bg-blue-600 dark:hover:bg-blue-700"
-            >
-              <ArrowRight className="h-5 w-5" />
-            </button>
+
+
+        <div className="flex w-full flex-col items-center gap-8">
+
+          {/* quick-question grid */}
+          <div className="grid w-full max-w-2xl grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-4">
+            {questionConfig.map(({ key, color, icon: Icon }) => (
+              <Button
+                key={key}
+                onClick={() => goToChat(questions[key])}
+                variant="outline"
+                className="aspect-square w-full cursor-pointer rounded-2xl border border-border bg-white/30 py-8 shadow backdrop-blur-lg transition-all hover:bg-border/30 active:scale-95 md:p-10"
+              >
+                <div className="flex h-full flex-col items-center justify-center gap-1 text-gray-700">
+                  <Icon size={25} strokeWidth={2} color={color} />
+                  <span className="text-xs font-medium sm:text-sm">{key}</span>
+                </div>
+              </Button>
+            ))}
           </div>
-        </form>
 
-        {/* quick-question grid */}
-        <div className="mt-4 grid w-full max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3 md:grid-cols-4">
-          {questionConfig.map(({ key, color, icon: Icon }) => (
+          {/* VOICE AGENT button */}
+          <div className="flex justify-center">
             <Button
-              key={key}
-              onClick={() => goToChat(questions[key])}
-              variant="outline"
-              className="border-border hover:bg-border/30 aspect-square w-full cursor-pointer rounded-2xl border bg-white/30 py-8 shadow backdrop-blur-lg active:scale-95 md:p-10"
-            >
-              <div className="flex h-full flex-col items-center justify-center gap-1 text-gray-700">
-                <Icon size={25} strokeWidth={2} color={color} />
-                <span className="text-xs font-medium sm:text-sm">{key}</span>
-              </div>
-            </Button>
-          ))}
-        </div>
-
-        {/* VOICE AGENT */}
-        {/* <h1 className="text-2xl font-semibold mb-4">Voice Agent Chat</h1> */}
-
-        <Button
               onClick={() => goToVoiceAgent()}
               variant="outline"
-              className="border-border hover:bg-border/30 aspect-square w-full cursor-pointer rounded-2xl border bg-white/30 py-8 shadow backdrop-blur-lg active:scale-95 md:p-10"
+              className="max-w-s w-full cursor-pointer rounded-2xl border border-gray-300 bg-white/60 px-6 py-4 shadow-md backdrop-blur-md transition-all duration-200 hover:bg-gray-100 active:scale-95"
             >
-              <div className="flex h-full flex-col items-center justify-center gap-1 text-gray-700">
-                <span className="text-xs font-medium sm:text-sm">Talk to Me</span>
+              <div className="flex flex-col items-center justify-center gap-1 text-gray-800">
+                <span className="text-sm font-semibold">🎙️ Talk to Me</span>
               </div>
             </Button>
+          </div>
+
+          {/* free-form question input */}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (input.trim()) goToChat(input.trim());
+            }}
+            className="relative w-full max-w-lg"
+          >
+            <div className="mx-auto flex items-center rounded-full border border-neutral-200 bg-white/30 py-2.5 pr-2 pl-6 backdrop-blur-lg transition-all hover:border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600">
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Ask me anything…"
+                className="w-full border-none bg-transparent text-base text-neutral-800 placeholder:text-neutral-500 focus:outline-none dark:text-neutral-200 dark:placeholder:text-neutral-500"
+              />
+              <button
+                type="submit"
+                disabled={!input.trim()}
+                aria-label="Submit question"
+                className="flex items-center justify-center rounded-full bg-[#0171E3] p-2.5 text-white transition-colors hover:bg-blue-600 disabled:opacity-70 dark:bg-blue-600 dark:hover:bg-blue-700"
+              >
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </div>
+          </form>
+
+        </div>
+
 
       </motion.div>
 
