@@ -14,6 +14,79 @@ import '@livekit/components-styles';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
+import dynamic from 'next/dynamic';
+import { Home } from 'lucide-react';
+
+// ClientOnly component for client-side rendering
+//@ts-ignore
+const ClientOnly = ({ children }) => {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
+
+  return <>{children}</>;
+};
+
+// Define Avatar component props interface
+interface AvatarProps {
+  hasActiveTool: boolean;
+}
+
+// Dynamic import of Avatar component
+const Avatar = dynamic<AvatarProps>( // render react component dynamically
+  () =>
+    Promise.resolve(({ hasActiveTool }: AvatarProps) => {
+      // This function will only execute on the client
+      const isIOS = () => {
+        // Multiple detection methods
+        const userAgent = window.navigator.userAgent;
+        const platform = window.navigator.platform;
+        const maxTouchPoints = window.navigator.maxTouchPoints || 0;
+
+        // UserAgent-based check
+        const isIOSByUA =
+          //@ts-ignore
+          /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+
+        // Platform-based check
+        const isIOSByPlatform = /iPad|iPhone|iPod/.test(platform);
+
+        // iPad Pro check
+        const isIPadOS =
+          //@ts-ignore
+          platform === 'MacIntel' && maxTouchPoints > 1 && !window.MSStream;
+
+        // Safari check
+        const isSafari = /Safari/.test(userAgent) && !/Chrome/.test(userAgent);
+
+        return isIOSByUA || isIOSByPlatform || isIPadOS || isSafari;
+      };
+
+      // Conditional rendering based on detection
+      return (
+        <div
+          className={`flex items-center justify-center rounded-full transition-all duration-300 ${hasActiveTool ? 'h-20 w-20' : 'h-28 w-28'
+            }`}
+        >
+          <div
+            className="relative cursor-pointer flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-full p-4"
+            onClick={() => (window.location.href = '/')}
+          >
+            <Home className="w-6 h-6 text-gray-700" />
+          </div>
+        </div>
+      );
+    }),
+  { ssr: false }
+);
+
+
 
 export default function VoiceAgentPage() {
 
@@ -25,7 +98,7 @@ export default function VoiceAgentPage() {
     adaptiveStream: true,
     dynacast: true,
   }));
-
+  const [hasActiveTool, sethasActiveTool] = useState(true)
   const [agentJoined, setAgentJoined] = useState(false);
 
 
@@ -34,7 +107,7 @@ export default function VoiceAgentPage() {
     camera: false,
     screenShare: false,
     microphone: true,
-    chat: false,
+    chat: true,
   };
 
   // Generating livekit token here and create room
@@ -62,8 +135,8 @@ export default function VoiceAgentPage() {
 
         // Step 3: Connect to LiveKit room if token received
         if (data.token) {
-          const connect =await roomInstance.connect(process.env.NEXT_PUBLIC_LIVEKIT_URL!, data.token);
-          console.log("connect",connect)
+          const connect = await roomInstance.connect(process.env.NEXT_PUBLIC_LIVEKIT_URL!, data.token);
+          console.log("connect", connect)
         }
 
         // Listen for new participant connection
@@ -104,21 +177,37 @@ export default function VoiceAgentPage() {
       transition={{ duration: 0.5 }}
       className="bg-accent mx-auto mt-8 w-full max-w-4xl rounded-3xl px-6 py-8 font-sans sm:px-10 md:px-16 md:py-12"
     >
-      <RoomContext.Provider value={roomInstance}>
-        <div data-lk-theme="default" style={{ height: '100dvh' }}>
-          {!agentJoined ? (
-            <div className="flex h-full items-center justify-center text-xl font-semibold text-black">
-              Waiting for the agent..
-            </div>
-          ) : (
-            <>
-              <MyVideoConference />
-              <RoomAudioRenderer />
-              <ControlBar controls={visibleControls} />
-            </>
-          )}
+      <div className="flex flex-col items-center space-y-6">
+        {/* Top: Centered Home Button */}
+        <div className="mt-4">
+          <ClientOnly>
+            <Avatar hasActiveTool={hasActiveTool} />
+          </ClientOnly>
         </div>
-      </RoomContext.Provider>
+
+        {/* Bottom: Rendered Room */}
+        <RoomContext.Provider value={roomInstance}>
+          <div
+            data-lk-theme="default"
+            className="w-full max-w-4xl rounded-xl bg-white shadow-md p-4"
+            style={{ height: '50dvh' }}
+          >
+            {!agentJoined ? (
+              <div className="flex h-full flex-col items-center justify-center text-black space-y-4">
+                <span className="text-xl font-semibold">Agent is joining...</span>
+                <div className="w-8 h-8 bg-blue-700 rounded-full animate-ping"></div>
+              </div>
+            ) : (
+              <>
+                <MyVideoConference />
+                <RoomAudioRenderer />
+                <ControlBar controls={visibleControls} />
+              </>
+            )}
+          </div>
+        </RoomContext.Provider>
+      </div>
+
     </motion.div>
   );
 }
@@ -128,13 +217,14 @@ function MyVideoConference() {
     [
       { source: Track.Source.Camera, withPlaceholder: false }, // don't show camera
     ],
-    { onlySubscribed: true,
+    {
+      onlySubscribed: true,
       // Only include tracks that the local participant is currently subscribed to.
       // This helps avoid rendering placeholders or unsubscribed tracks.
-      updateOnlyOn: [RoomEvent.TrackSubscribed, RoomEvent.TrackUnsubscribed], 
+      updateOnlyOn: [RoomEvent.TrackSubscribed, RoomEvent.TrackUnsubscribed],
       // Re-render the component only when a track is subscribed or unsubscribed.
       // This avoids unnecessary updates and improves performance.
-     },
+    },
   )
 
   tracks.forEach((t) => {
