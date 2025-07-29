@@ -87,6 +87,37 @@ const Avatar = dynamic<AvatarProps>( // render react component dynamically
 );
 
 
+function MyVideoConference() {
+  const tracks = useTracks(
+    [
+      { source: Track.Source.Camera, withPlaceholder: false }, // don't show camera
+    ],
+    {
+      onlySubscribed: true,
+      // Only include tracks that the local participant is currently subscribed to.
+      // This helps avoid rendering placeholders or unsubscribed tracks.
+      updateOnlyOn: [RoomEvent.TrackSubscribed, RoomEvent.TrackUnsubscribed],
+      // Re-render the component only when a track is subscribed or unsubscribed.
+      // This avoids unnecessary updates and improves performance.
+    },
+  )
+
+  tracks.forEach((t) => {
+    const kind = t.publication ? t.publication.kind : 'unknown';
+    console.log(`Track from participant: ${t.participant.identity}, kind: ${kind}, source: ${t.source}`);
+  });
+
+  return (
+    <GridLayout
+      tracks={tracks}
+      style={{ height: 'calc(100vh - var(--lk-control-bar-height))' }}
+    >
+      <ParticipantTile />
+    </GridLayout>
+  );
+}
+
+
 
 export default function VoiceAgentPage() {
 
@@ -100,7 +131,7 @@ export default function VoiceAgentPage() {
   }));
   const [hasActiveTool, sethasActiveTool] = useState(true)
   const [agentJoined, setAgentJoined] = useState(false);
-
+  const [msg, setMsg] = useState("Agent is joining...")
 
   // control bar visual control
   const visibleControls = {
@@ -122,7 +153,7 @@ export default function VoiceAgentPage() {
 
         if (!hasMic) {
           toast.error('No microphone detected. Please connect a microphone and try again.');
-          console.log("No microphone detected.")
+          setMsg('We couldn’t detect your microphone. Please ensure it’s connected and enabled in your browser settings.')
           return;
         }
 
@@ -155,8 +186,8 @@ export default function VoiceAgentPage() {
         });
       } catch (err) {
         // Handle permission denial or other errors
-        toast.error('Unable to access microphone or connect. Please check permissions.');
-        console.log("No microphone detected.")
+        toast.error(`Unable to connect voice agent due to ${err}`);
+        setMsg("Ketan's voice agent is not available.")
         // You can also set state here to show an error message to user
       }
     }
@@ -193,16 +224,16 @@ export default function VoiceAgentPage() {
             style={{ height: '50dvh' }}
           >
             {!agentJoined ? (
-              <div className="flex h-full flex-col items-center justify-center text-black space-y-4">
-                <span className="text-xl font-semibold">Agent is joining...</span>
+              <div className="flex h-full flex-col m4 items-center justify-center text-black space-y-4 bg-gray-200">
+                <span className="text-xl font-semibold px-4 py-2">{msg}</span>
                 <div className="w-8 h-8 bg-blue-700 rounded-full animate-ping"></div>
               </div>
             ) : (
-              <>
+              <div className="bg-gray-100 h-full w-full">
                 <MyVideoConference />
                 <RoomAudioRenderer />
                 <ControlBar controls={visibleControls} />
-              </>
+              </div>
             )}
           </div>
         </RoomContext.Provider>
@@ -212,32 +243,3 @@ export default function VoiceAgentPage() {
   );
 }
 
-function MyVideoConference() {
-  const tracks = useTracks(
-    [
-      { source: Track.Source.Camera, withPlaceholder: false }, // don't show camera
-    ],
-    {
-      onlySubscribed: true,
-      // Only include tracks that the local participant is currently subscribed to.
-      // This helps avoid rendering placeholders or unsubscribed tracks.
-      updateOnlyOn: [RoomEvent.TrackSubscribed, RoomEvent.TrackUnsubscribed],
-      // Re-render the component only when a track is subscribed or unsubscribed.
-      // This avoids unnecessary updates and improves performance.
-    },
-  )
-
-  tracks.forEach((t) => {
-    const kind = t.publication ? t.publication.kind : 'unknown';
-    console.log(`Track from participant: ${t.participant.identity}, kind: ${kind}, source: ${t.source}`);
-  });
-
-  return (
-    <GridLayout
-      tracks={tracks}
-      style={{ height: 'calc(100vh - var(--lk-control-bar-height))' }}
-    >
-      <ParticipantTile />
-    </GridLayout>
-  );
-}
