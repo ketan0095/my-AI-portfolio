@@ -226,7 +226,7 @@ export default function VoiceAgentPage() {
             {!agentJoined ? (
               <div className="flex h-full flex-col m4 items-center justify-center text-black space-y-4 bg-gray-200">
                 <span className="text-xl font-semibold px-4 py-2">{msg}</span>
-                <div className="w-8 h-8 bg-blue-700 rounded-full animate-ping"></div>
+                <div className="w-8 h-8 bg-blue-800 rounded-full animate-ping"></div>
               </div>
             ) : (
               <div className="bg-gray-100 h-full w-full">
