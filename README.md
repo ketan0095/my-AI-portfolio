@@ -1,2 +1,2 @@
 # my-AI-portfolio
-# todo: need to update
+# todo: need to update with proper flow
